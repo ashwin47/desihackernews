@@ -78,15 +78,15 @@ class << Rails.application
   end
 
   def open_signups?
-    ENV["OPEN_SIGNUPS"] == "true"
+    Rails.application.credentials.config[:OPEN_SIGNUPS] == "true"
   end
 
   def domain
-    "example.com"
+    "lvh.me:3000"
   end
 
   def name
-    "Lobsters"
+    "DesiHackerNews"
   end
 
   # to force everyone to be considered logged-out (without destroying
@@ -110,6 +110,6 @@ class << Rails.application
   # whether absolute URLs should include https (does not require that
   # config.force_ssl be on)
   def ssl?
-    true
+    false
   end
 end
