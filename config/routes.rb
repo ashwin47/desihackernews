@@ -48,6 +48,7 @@ Rails.application.routes.draw do
 
   get "/login" => "login#index"
   post "/login" => "login#login"
+  get "/login/twitter_auth" => "signup#twitter_auth"
   post "/logout" => "login#logout"
   get "/login/2fa" => "login#twofa"
   post "/login/2fa_verify" => "login#twofa_verify", :as => "twofa_login"
@@ -55,6 +56,8 @@ Rails.application.routes.draw do
   get "/signup" => "signup#index"
   post "/signup" => "signup#signup"
   get "/signup/invite" => "signup#invite"
+  get "/signup/twitter_auth" => "signup#twitter_auth"
+  get "/signup/twitter_callback" => "signup#twitter_callback"
 
   get "/login/forgot_password" => "login#forgot_password",
     :as => "forgot_password"
