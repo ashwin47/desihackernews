@@ -56,6 +56,12 @@ Rails.application.routes.draw do
   post "/signup" => "signup#signup"
   get "/signup/invite" => "signup#invite"
 
+  get "/connected_accounts/twitter_auth" => "connected_accounts#twitter_auth"
+  get "/connected_accounts/twitter_callback" => "connected_accounts#twitter_callback"
+  get "/connected_accounts/twitter_connect_auth" => "connected_accounts#twitter_connect_auth"
+  get "/connected_accounts/twitter_connect_callback" => "connected_accounts#twitter_connect_callback"
+  post "/connected_accounts/twitter_disconnect" => "connected_accounts#twitter_disconnect"
+
   get "/login/forgot_password" => "login#forgot_password",
     :as => "forgot_password"
   post "/login/reset_password" => "login#reset_password",
@@ -155,9 +161,6 @@ Rails.application.routes.draw do
   get "/settings/github_auth" => "settings#github_auth"
   get "/settings/github_callback" => "settings#github_callback"
   post "/settings/github_disconnect" => "settings#github_disconnect"
-  get "/settings/twitter_auth" => "settings#twitter_auth"
-  get "/settings/twitter_callback" => "settings#twitter_callback"
-  post "/settings/twitter_disconnect" => "settings#twitter_disconnect"
 
   resources :keybase_proofs, only: [:new, :create, :destroy]
   get "/.well-known/keybase-proof-config" => "keybase_proofs#kbconfig", :as => "keybase_config"

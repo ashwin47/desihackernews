@@ -2,8 +2,8 @@ class Twitter
   cattr_accessor :CONSUMER_KEY, :CONSUMER_SECRET, :AUTH_TOKEN, :AUTH_SECRET
 
   # these need to be overridden in config/initializers/production.rb
-  @@CONSUMER_KEY = nil
-  @@CONSUMER_SECRET = nil
+  @@CONSUMER_KEY = Rails.application.credentials.dig(:twitter, :CONSUMER_KEY)
+  @@CONSUMER_SECRET = Rails.application.credentials.dig(:twitter, :CONSUMER_SECRET)
 
   # You'll need to go to https://apps.twitter.com/, add an app, and
   # whitelist both /settings and /settings/twitter_callback as Callback URLs
@@ -11,8 +11,8 @@ class Twitter
 
   # these are set for the account used to post updates in
   # script/post_to_twitter (needs read/write access)
-  @@AUTH_TOKEN = nil
-  @@AUTH_SECRET = nil
+  @@AUTH_TOKEN = #Rails.application.credentials.dig(:twitter, :AUTH_TOKEN)
+  @@AUTH_SECRET = #Rails.application.credentials.dig(:twitter, :AUTH_SECRET)
 
   MAX_TWEET_LEN = 280
 
@@ -61,22 +61,25 @@ class Twitter
     rt = OAuth::RequestToken.from_hash(self.oauth_consumer, :oauth_token => tok)
     at = rt.get_access_token(:oauth_verifier => verifier)
 
-    res = at.get("/1.1/account/verify_credentials.json")
+    res = at.get("/1.1/account/verify_credentials.json?include_email=true")
     js = JSON.parse(res.body)
 
-    if !js["screen_name"].present?
+    if !js["screen_name"].present? || !js["email"].present?
       return nil
     end
 
-    [at.token, at.secret, js["screen_name"]]
+    [at.token, at.secret, js["screen_name"], js["email"]]
   end
 
-  def self.oauth_request_token(state)
-    self.oauth_consumer.get_request_token(:oauth_callback =>
-      Rails.application.root_url + "settings/twitter_callback?state=#{state}")
+  def self.oauth_request_token(state, auth)
+    if auth
+      self.oauth_consumer.get_request_token(oauth_callback: Rails.application.root_url + "connected_accounts/twitter_callback?state=#{state}")
+    else
+      self.oauth_consumer.get_request_token(oauth_callback: Rails.application.root_url + "connected_accounts/twitter_connect_callback?state=#{state}")
+    end
   end
 
-  def self.oauth_auth_url(state)
-    self.oauth_request_token(state).authorize_url
+  def self.oauth_auth_url(state, auth)
+    self.oauth_request_token(state, auth).authorize_url
   end
 end
