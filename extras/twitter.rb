@@ -61,21 +61,25 @@ class Twitter
     rt = OAuth::RequestToken.from_hash(self.oauth_consumer, :oauth_token => tok)
     at = rt.get_access_token(:oauth_verifier => verifier)
 
-    res = at.get("/1.1/account/verify_credentials.json")
+    res = at.get("/1.1/account/verify_credentials.json?include_email=true")
     js = JSON.parse(res.body)
 
-    if !js["screen_name"].present?
+    if !js["screen_name"].present? || !js["email"].present?
       return nil
     end
 
-    [at.token, at.secret, js["screen_name"]]
+    [at.token, at.secret, js["screen_name"], js["email"]]
   end
 
-  def self.oauth_request_token(state)
-    self.oauth_consumer.get_request_token(oauth_callback: Rails.application.root_url + "settings/twitter_callback?state=#{state}")
+  def self.oauth_request_token(state, auth)
+    if auth
+      self.oauth_consumer.get_request_token(oauth_callback: Rails.application.root_url + "connected_accounts/twitter_callback?state=#{state}")
+    else
+      self.oauth_consumer.get_request_token(oauth_callback: Rails.application.root_url + "connected_accounts/twitter_connect_callback?state=#{state}")
+    end
   end
 
-  def self.oauth_auth_url(state)
-    self.oauth_request_token(state).authorize_url
+  def self.oauth_auth_url(state, auth)
+    self.oauth_request_token(state, auth).authorize_url
   end
 end

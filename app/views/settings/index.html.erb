@@ -134,10 +134,10 @@
           Linked to
           <strong><a href="https://twitter.com/<%= h(@edit_user.twitter_username)
             %>">@<%= h(@edit_user.twitter_username) %></a></strong>
-            (<%= link_to "Disconnect", "/settings/twitter_disconnect",
+            (<%= link_to "Disconnect", "/connected_accounts/twitter_disconnect",
               :method => :post %>)
         <% else %>
-          <a href="/settings/twitter_auth">Connect</a>
+          <a href="/connected_accounts/twitter_connect_auth">Connect</a>
         <% end %>
         </span>
       </div>
