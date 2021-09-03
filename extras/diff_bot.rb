@@ -2,7 +2,7 @@ class DiffBot
   cattr_accessor :DIFFBOT_API_KEY
 
   # this needs to be overridden in config/initializers/production.rb
-  @@DIFFBOT_API_KEY = nil
+  @@DIFFBOT_API_KEY = Rails.application.credentials.dig(:DIFFBOT, :API_KEY)
 
   DIFFBOT_API_URL = "http://www.diffbot.com/api/article".freeze
 
