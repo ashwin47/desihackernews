@@ -11,7 +11,7 @@ class Twitter
   # these are set for the account used to post updates in
   # script/post_to_twitter (needs read/write access)
   @@AUTH_TOKEN = Rails.application.credentials.dig(:TWITTER, :AUTH_TOKEN)
-  @@AUTH_SECRET = Rails.application.credentials.dig(:TWITTER, :AUTH_TOKEN)
+  @@AUTH_SECRET = Rails.application.credentials.dig(:TWITTER, :AUTH_SECRET)
 
   MAX_TWEET_LEN = 280
 

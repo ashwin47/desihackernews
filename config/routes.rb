@@ -61,6 +61,8 @@ Rails.application.routes.draw do
   get "/connected_accounts/twitter_connect_auth" => "connected_accounts#twitter_connect_auth"
   get "/connected_accounts/twitter_connect_callback" => "connected_accounts#twitter_connect_callback"
   post "/connected_accounts/twitter_disconnect" => "connected_accounts#twitter_disconnect"
+  get "/connected_accounts/user_onboard" => "connected_accounts#user_onboard_index"
+  post "/connected_accounts/user_onboard" => "connected_accounts#user_onboard"
 
   get "/login/forgot_password" => "login#forgot_password",
     :as => "forgot_password"
