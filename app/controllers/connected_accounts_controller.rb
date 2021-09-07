@@ -1,5 +1,6 @@
 class ConnectedAccountsController < ApplicationController
-  before_action :require_logged_in_user , only: [:twitter_connect_auth, :twitter_connect_callback, :twitter_disconnect, :user_onboard,:user_onboard_index]
+  before_action :require_logged_in_user, only: [:twitter_connect_auth, :twitter_connect_callback,
+    :twitter_disconnect, :user_onboard, :user_onboard_index]
   before_action :check_for_read_only_mode
   before_action :verify_user, only: :user_onboard_index
 
@@ -29,7 +30,7 @@ class ConnectedAccountsController < ApplicationController
       user = User.find_by(email: email)
       if user
         @user = user
-      else 
+      else
         @user = User.new
         @user.username = username
         @user.email = email
@@ -42,8 +43,8 @@ class ConnectedAccountsController < ApplicationController
       @user.twitter_username = username
     end
 
-    if not @user.valid? && @user.errors[:username].present? # handle username uniq validation
-      @user.username = "#{@user.username}" + rand.to_s[8]
+    if !@user.valid? && @user.errors[:username].present? # handle username uniq validation
+      @user.username = @user.username.to_s + rand.to_s[8]
     end
 
     if @user.save
@@ -64,25 +65,14 @@ class ConnectedAccountsController < ApplicationController
 
   def user_onboard_index
     @title = "User Onboarding"
-    previous_username = @user.username
-    debugger
     @edit_user = @user.dup
   end
 
   def user_onboard
-    previous_username = @user.username
     @edit_user = @user.clone
 
-    if params[:user][:password].present? && 
+    if params[:user][:password].present?
       if @edit_user.update(user_params)
-        if @edit_user.username != previous_username
-          Moderation.create!(
-            is_from_suggestions: true,
-            user: @edit_user,
-            action: "changed own username from \"#{previous_username}\" " <<
-                    "to \"#{@edit_user.username}\"",
-          )
-        end
         flash.now[:success] = "Successfully updated settings."
         @user = @edit_user
         return redirect_to "/"
@@ -96,8 +86,7 @@ class ConnectedAccountsController < ApplicationController
     end
   end
 
-
-# Associate twitter account on settings page
+  # Associate twitter account on settings page
 
   def twitter_connect_auth
     session[:twitter_state] = SecureRandom.hex
@@ -147,7 +136,7 @@ class ConnectedAccountsController < ApplicationController
     return redirect_to "/settings"
   end
 
-  private
+private
 
   def user_params
     params.require(:user).permit(
@@ -164,5 +153,4 @@ class ConnectedAccountsController < ApplicationController
       redirect_to "/login"
     end
   end
-
 end

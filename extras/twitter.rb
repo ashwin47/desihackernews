@@ -4,7 +4,7 @@ class Twitter
   # these need to be overridden in config/initializers/production.rb
   @@CONSUMER_KEY = Rails.application.credentials.dig(:TWITTER, :CONSUMER_KEY)
   @@CONSUMER_SECRET = Rails.application.credentials.dig(:TWITTER, :CONSUMER_SECRET)
-  
+
   # You'll need to go to https://apps.twitter.com/, add an app, and
   # whitelist both /settings and /settings/twitter_callback as Callback URLs
   # for users to be able to authenticate their Twitter accounts.
@@ -73,9 +73,11 @@ class Twitter
 
   def self.oauth_request_token(state, auth)
     if auth
-      self.oauth_consumer.get_request_token(oauth_callback: Rails.application.root_url + "connected_accounts/twitter_callback?state=#{state}")
+      self.oauth_consumer.get_request_token(oauth_callback: Rails.application.root_url +
+        "connected_accounts/twitter_callback?state=#{state}")
     else
-      self.oauth_consumer.get_request_token(oauth_callback: Rails.application.root_url + "connected_accounts/twitter_connect_callback?state=#{state}")
+      self.oauth_consumer.get_request_token(oauth_callback: Rails.application.root_url +
+        "connected_accounts/twitter_connect_callback?state=#{state}")
     end
   end
 
