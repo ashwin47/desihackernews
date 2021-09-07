@@ -1,0 +1,18 @@
+<div class="box wide">
+  <%= form_with model: @edit_user, url: connected_accounts_user_onboard_path, method: :post, id: 'edit_user', local: true do |f| %>
+    <%= errors_for f.object %>
+
+    <div class="boxline">
+      <%= f.label :username, "Username:", :class => "required" %>
+      <%= f.text_field :username, :size => 20%>
+    </div>
+    <div class="boxline">
+      <%= f.label :password, "New Password:", :class => "required" %>
+      <%= f.password_field :password, :size => 20, :autocomplete => "off" %>
+    </div>
+
+    <p>
+    <%= f.submit "Save Account Settings" %>
+    </p>
+  <% end %>
+</div>

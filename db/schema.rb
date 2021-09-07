@@ -294,6 +294,7 @@ ActiveRecord::Schema.define(version: 2020_08_28_015742) do
     t.bigint "disabled_invite_by_user_id", unsigned: true
     t.string "disabled_invite_reason", limit: 200
     t.text "settings"
+    t.boolean "connected_account", default: false
     t.index ["banned_by_user_id"], name: "users_banned_by_user_id_fk"
     t.index ["disabled_invite_by_user_id"], name: "users_disabled_invite_by_user_id_fk"
     t.index ["email"], name: "index_users_on_email", unique: true

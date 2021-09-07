@@ -4,15 +4,15 @@ class Twitter
   # these need to be overridden in config/initializers/production.rb
   @@CONSUMER_KEY = Rails.application.credentials.dig(:TWITTER, :CONSUMER_KEY)
   @@CONSUMER_SECRET = Rails.application.credentials.dig(:TWITTER, :CONSUMER_SECRET)
-
+  
   # You'll need to go to https://apps.twitter.com/, add an app, and
   # whitelist both /settings and /settings/twitter_callback as Callback URLs
   # for users to be able to authenticate their Twitter accounts.
 
   # these are set for the account used to post updates in
   # script/post_to_twitter (needs read/write access)
-  @@AUTH_TOKEN = #Rails.application.credentials.dig(:twitter, :AUTH_TOKEN)
-  @@AUTH_SECRET = #Rails.application.credentials.dig(:twitter, :AUTH_SECRET)
+  @@AUTH_TOKEN = Rails.application.credentials.dig(:TWITTER, :AUTH_TOKEN)
+  @@AUTH_SECRET = Rails.application.credentials.dig(:TWITTER, :AUTH_SECRET)
 
   MAX_TWEET_LEN = 280
 
