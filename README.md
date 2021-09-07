@@ -1,36 +1,26 @@
-### Lobsters Rails Project [![Build Status](https://travis-ci.org/lobsters/lobsters.svg?branch=master)](https://travis-ci.org/lobsters/lobsters)
+### DesiHackerNews
 
-This is the
-[quite sad](https://www.reddit.com/r/rails/comments/6jz7tq/source_code_lobsters_a_hacker_news_clone_built/)
-source code to the
-[ghost town](https://twitter.com/webshitweekly/status/1399935275057389571) at
-[https://lobste.rs](https://lobste.rs).
-It is a Rails codebase and uses a SQL (MariaDB in production) backend for the database.
+This project comes from a desire to make desi version of Hacker News. As simple as that!.
 
-You are free to use this code to start your own [sister site](https://github.com/lobsters/lobsters/wiki)
-because the code is available under a [permissive license](https://github.com/lobsters/lobsters/blob/master/LICENSE) (3-clause BSD).
-We welcome bug reports and code contributions that help use improve [lobste.rs](https://lobste.rs).
-As a volunteer project we're reluctant to take on work that's not useful to our site, so please understand if we don't want to adopt your custom feature.
+This is a fork of [Lobster](https://github.com/lobsters/lobsters)
 
 
 #### Contributing bugfixes and new features
 
 We'd love to have your help.
-Please see the [CONTRIBUTING](https://github.com/lobsters/lobsters/blob/master/CONTRIBUTING.md) file for details.
+Please see the [CONTRIBUTING](https://github.com/ashwin47/desihackernews/blob/master/CONTRIBUTING.md) file for details.
 
 #### Initial setup
 
-Use the steps below for a local install or
-[lobsters-ansible](https://github.com/lobsters/lobsters-ansible) for our production deployment config.
-There's an external project [docker-lobsters](https://github.com/utensils/docker-lobsters) if you want to use Docker.
+Use the steps below for a local install
 
-* Install the Ruby version specified in [.ruby-version](https://github.com/lobsters/lobsters/blob/master/.ruby-version)
+* Install the Ruby version specified in [.ruby-version](https://github.com/ashwin47/desihackernews/blob/master/.ruby-version)
 
 * Checkout the lobsters git tree from Github
     ```sh
-    $ git clone git://github.com/lobsters/lobsters.git
-    $ cd lobsters
-    lobsters$
+    $ git clone https://github.com/ashwin47/desihackernews.git
+    $ cd desihackernews
+    desihackernews$
     ```
 
 * Install Nodejs, needed (or other execjs) for uglifier
@@ -43,7 +33,7 @@ There's an external project [docker-lobsters](https://github.com/utensils/docker
 * Run Bundler to install/bundle gems needed by the project:
 
     ```sh
-    lobsters$ bundle
+    desihackernews$ bundle
     ```
     
     * If when installing the `mysql2` gem on macOS, you see 
@@ -81,7 +71,7 @@ running tests:
 * Load the schema into the new database:
 
     ```sh
-    lobsters$ rails db:schema:load
+    desihackernews$ rails db:schema:load
     ```
 
 * On your production server, copy `config/initializers/production.rb.sample`
@@ -93,20 +83,18 @@ running tests:
 * Seed the database to create an initial administrator user, the `inactive-user`, and at least one tag:
 
     ```sh
-    lobsters$ rails db:seed
+    desihackernews$ rails db:seed
     ```
 
 * On your personal computer, you can add some sample data and run the Rails server in development mode.
   You should be able to login to `http://localhost:3000` with your new `test` user:
 
     ```sh
-    lobsters$ rails fake_data
-    lobsters$ rails server
+    desihackernews$ rails fake_data
+    desihackernews$ rails server
     ```
 
 * Deploying the site in production requires setting up a web server and running the app in production mode.
-  There are more tools and options available than we can describe; find a guide or an expert.
-  The lobsters-ansible repo has our config files to crib from. Some app-specific notes:
 
 * Set up crontab or another scheduler to run regular jobs:
 

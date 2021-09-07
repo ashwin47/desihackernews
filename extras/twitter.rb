@@ -2,8 +2,8 @@ class Twitter
   cattr_accessor :CONSUMER_KEY, :CONSUMER_SECRET, :AUTH_TOKEN, :AUTH_SECRET
 
   # these need to be overridden in config/initializers/production.rb
-  @@CONSUMER_KEY = Rails.application.credentials.dig(:twitter, :CONSUMER_KEY)
-  @@CONSUMER_SECRET = Rails.application.credentials.dig(:twitter, :CONSUMER_SECRET)
+  @@CONSUMER_KEY = Rails.application.credentials.dig(:TWITTER, :CONSUMER_KEY)
+  @@CONSUMER_SECRET = Rails.application.credentials.dig(:TWITTER, :CONSUMER_SECRET)
 
   # You'll need to go to https://apps.twitter.com/, add an app, and
   # whitelist both /settings and /settings/twitter_callback as Callback URLs

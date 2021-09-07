@@ -82,7 +82,7 @@ class << Rails.application
   end
 
   def domain
-    "lvh.me:3000"
+    Rails.application.credentials.DOMAIN || "lvh.me:3000"
   end
 
   def name
