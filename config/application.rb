@@ -112,4 +112,8 @@ class << Rails.application
   def ssl?
     true
   end
+
+  def plausible_url
+    Rails.application.credentials.config[:PLAUSIBLE_URL]
+  end
 end

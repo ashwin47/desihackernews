@@ -28,6 +28,9 @@
     <script>
       Lobsters.curUser = '<%= @user.username %>';
     </script>
+  <% if Rails.application.plausible_url %>
+    <script async defer data-domain=<%= Rails.application.domain %> src=<%= Rails.application.plausible_url %> ></script>
+  <% end %>
   <% end %>
   <%= csrf_meta_tags %>
   <% if @rss_link %>
