@@ -20,18 +20,18 @@ if Rails.env.production?
       :exception_recipients => %w{},                 # fill in destination addresses
     }
 
-  Pushover.API_TOKEN = "secret"
-  Pushover.SUBSCRIPTION_CODE = "secret"
+  Pushover.API_TOKEN = Rails.application.credentials.dig(:PUSHOVER, :API_TOKEN)
+  Pushover.SUBSCRIPTION_CODE = Rails.application.credentials.dig(:PUSHOVER, :SUBSCRIPTION_CODE)
 
-  DiffBot.DIFFBOT_API_KEY = "secret"
+  DiffBot.DIFFBOT_API_KEY = Rails.application.credentials.dig(:DIFFBOT, :API_KEY)
 
-  Twitter.CONSUMER_KEY = "secret"
-  Twitter.CONSUMER_SECRET = "secret"
-  Twitter.AUTH_TOKEN = "secret"
-  Twitter.AUTH_SECRET = "secret"
+  Twitter.CONSUMER_KEY = Rails.application.credentials.dig(:TWITTER, :CONSUMER_KEY)
+  Twitter.CONSUMER_SECRET = Rails.application.credentials.dig(:TWITTER, :CONSUMER_SECRET)
+  Twitter.AUTH_TOKEN = Rails.application.credentials.dig(:TWITTER, :AUTH_TOKEN)
+  Twitter.AUTH_SECRET = Rails.application.credentials.dig(:TWITTER, :AUTH_SECRET)
 
-  Github.CLIENT_ID = "secret"
-  Github.CLIENT_SECRET = "secret"
+  Github.CLIENT_ID = Rails.application.credentials.dig(:GITHUB, :CLIENT_ID)
+  Github.CLIENT_SECRET = Rails.application.credentials.dig(:GITHUB, :CLIENT_SECRET)
 
   BCrypt::Engine.cost = 12
 
@@ -42,7 +42,7 @@ if Rails.env.production?
 
   class << Rails.application
     def allow_invitation_requests?
-      false
+      true
     end
 
     def allow_new_users_to_invite?
@@ -50,11 +50,11 @@ if Rails.env.production?
     end
 
     def domain
-      "example.org"
+      "hackernews.desi"
     end
 
     def name
-      "Sitename"
+      "DesiHackerNews"
     end
 
     def ssl?
