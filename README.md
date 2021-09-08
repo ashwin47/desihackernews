@@ -55,8 +55,8 @@ running tests:
       reconnect: false
       database: lobsters_dev
       socket: /tmp/mysql.sock
-      username: *dev_username*
-      password: *dev_password*
+      username: <%= Rails.application.credentials.config[:DB_USER] %>
+      password: <%= Rails.application.credentials.config[:DB_PASSWORD] %>
       
     test:
       adapter: mysql2
@@ -64,8 +64,8 @@ running tests:
       reconnect: false
       database: lobsters_test
       socket: /tmp/mysql.sock
-      username: *test_username*
-      password: *test_password*
+      username: <%= Rails.application.credentials.config[:DB_USER] %>
+      password: <%= Rails.application.credentials.config[:DB_PASSWORD] %>
     ```
 
 * Load the schema into the new database:
