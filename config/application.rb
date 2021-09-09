@@ -74,7 +74,7 @@ end
 # local file such as config/initializers/production.rb
 class << Rails.application
   def allow_invitation_requests?
-    true
+    false
   end
 
   def open_signups?
