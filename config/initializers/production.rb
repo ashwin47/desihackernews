@@ -42,7 +42,7 @@ if Rails.env.production?
 
   class << Rails.application
     def allow_invitation_requests?
-      true
+      false
     end
 
     def allow_new_users_to_invite?
