@@ -38,7 +38,7 @@ if Rails.env.production?
   Keybase.DOMAIN = Rails.application.domain
   Keybase.BASE_URL = ENV.fetch('KEYBASE_BASE_URL') { 'https://keybase.io' }
 
-  ActionMailer::Base.delivery_method = :sendmail
+  ActionMailer::Base.delivery_method = :ses
 
   class << Rails.application
     def allow_invitation_requests?
