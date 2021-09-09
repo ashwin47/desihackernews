@@ -132,13 +132,13 @@ class User < ApplicationRecord
     "sysop", "webmaster", "enable", "new", "signup",].freeze
 
   # days old accounts are considered new for
-  NEW_USER_DAYS = 70
+  NEW_USER_DAYS = 1
 
   # minimum karma required to be able to offer title/tag suggestions
-  MIN_KARMA_TO_SUGGEST = 10
+  MIN_KARMA_TO_SUGGEST = 5
 
   # minimum karma required to be able to flag comments
-  MIN_KARMA_TO_FLAG = 50
+  MIN_KARMA_TO_FLAG = 20
 
   # minimum karma required to be able to submit new stories
   MIN_KARMA_TO_SUBMIT_STORIES = -4
@@ -289,7 +289,7 @@ class User < ApplicationRecord
   end
 
   def can_invite?
-    !self.is_new? && !banned_from_inviting? && self.can_submit_stories?
+    !banned_from_inviting? && self.can_submit_stories?
   end
 
   def can_offer_suggestions?
