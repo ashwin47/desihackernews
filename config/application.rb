@@ -118,5 +118,4 @@ class << Rails.application
   def plausible_url
     Rails.application.credentials.config[:PLAUSIBLE_URL]
   end
-  ActionMailer::Base.delivery_method = :smtp
 end
