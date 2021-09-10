@@ -79,6 +79,10 @@ class << Rails.application
     false
   end
 
+  def allow_new_users_to_invite?
+    true
+  end
+
   def open_signups?
     Rails.application.credentials.config[:OPEN_SIGNUPS]
   end

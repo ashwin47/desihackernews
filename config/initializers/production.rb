@@ -50,7 +50,7 @@ if Rails.env.production?
     end
 
     def domain
-      "hackernews.desi"
+      Rails.application.credentials.config[:DOMAIN]
     end
 
     def name
