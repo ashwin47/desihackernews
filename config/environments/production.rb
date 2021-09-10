@@ -62,14 +62,15 @@ Rails.application.configure do
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_url_options = { host: Rails.application.domain, protocol:'https'}
   config.action_mailer.smtp_settings = {
     address: Rails.application.credentials.dig(:AWS, :SMTP_SERVER),
-    port: Integer(ENV.fetch("SMTP_PORT", 587)),
+    port: 587,
     domain: Rails.application.domain,
-    enable_starttls_auto: (ENV["SMTP_STARTTLS_AUTO"] == "true"),
-    authentication: :login,
+    enable_starttls_auto: true,
+    authentication: :plain,
     user_name: Rails.application.credentials.dig(:AWS, :SMTP_USERNAME),
     password: Rails.application.credentials.dig(:AWS, :SMTP_PASSWORD),
   }
