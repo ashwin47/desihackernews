@@ -48,6 +48,8 @@ module Lobsters
 
     # config.active_record.raise_in_transactional_callbacks = true
 
+    config.action_mailer.perform_deliveries = true
+
     config.cache_store = :file_store, "#{config.root}/tmp/cache/"
 
     config.exceptions_app = self.routes
@@ -75,6 +77,10 @@ end
 class << Rails.application
   def allow_invitation_requests?
     false
+  end
+
+  def allow_new_users_to_invite?
+    true
   end
 
   def open_signups?

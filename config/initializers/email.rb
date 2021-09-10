@@ -1,8 +1,10 @@
 ActionMailer::Base.smtp_settings = {
-  :address => ENV.fetch("SMTP_HOST", "127.0.0.1"),
-  :port => Integer(ENV.fetch("SMTP_PORT", 25)),
-  :domain => Rails.application.domain,
-  :enable_starttls_auto => (ENV["SMTP_STARTTLS_AUTO"] == "true"),
-  :user_name => ENV.fetch("SMTP_USERNAME", ""),
-  :password => ENV.fetch("SMTP_PASSWORD", ""),
+  address: Rails.application.credentials.dig(:AWS, :SMTP_SERVER),
+  port: 587,
+  domain: Rails.application.domain,
+  enable_starttls_auto: true,
+  tls: false,
+  ssl: false,
+  user_name: Rails.application.credentials.dig(:AWS, :SMTP_USERNAME),
+  password: Rails.application.credentials.dig(:AWS, :SMTP_PASSWORD),
 }

@@ -64,6 +64,8 @@ class SignupController < ApplicationController
       session[:u] = @new_user.session_token
       flash[:success] = "Welcome to #{Rails.application.name}, " <<
                         "#{@new_user.username}!"
+      
+      WelcomeMailer.welcome(@new_user).deliver_now
 
       if Rails.application.allow_new_users_to_invite?
         return redirect_to signup_invite_path
