@@ -65,16 +65,6 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_url_options = { host: Rails.application.domain, protocol:'https'}
-  config.action_mailer.smtp_settings = {
-    address: Rails.application.credentials.dig(:AWS, :SMTP_SERVER),
-    port: 587,
-    domain: Rails.application.domain,
-    enable_starttls_auto: true,
-    tls: false,
-    ssl: false,
-    user_name: Rails.application.credentials.dig(:AWS, :SMTP_USERNAME),
-    password: Rails.application.credentials.dig(:AWS, :SMTP_PASSWORD),
-  }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
