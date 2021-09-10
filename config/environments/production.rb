@@ -70,6 +70,8 @@ Rails.application.configure do
     port: 587,
     domain: Rails.application.domain,
     enable_starttls_auto: true,
+    tls: false,
+    ssl: false,
     authentication: :plain,
     user_name: Rails.application.credentials.dig(:AWS, :SMTP_USERNAME),
     password: Rails.application.credentials.dig(:AWS, :SMTP_PASSWORD),
