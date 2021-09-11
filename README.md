@@ -47,13 +47,14 @@ Use the steps below for a local install
     ```sh
     rails credentials:edit --environment development
     ```
-      ```yaml
-      secret_key_base:
+    
+    ```yaml
+    secret_key_base:
 
-      DOMAIN: 
-      DB_USER:
-      DB_PASSWORD:       
-      ```
+    DOMAIN: 
+    DB_USER:
+    DB_PASSWORD:       
+    ```
 
 * Create a MySQL (other DBs supported by ActiveRecord may work, only MySQL and
 MariaDB have been tested) database, username, and password and put them in a
