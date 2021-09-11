@@ -1,6 +1,6 @@
 ### DesiHackerNews
 
-This project comes from a desire to make desi version of Hacker News. As simple as that!.
+DesiHackerNews(DHN) is an attempt to cultivate an India-centric technology/startup community around link aggregation and discussion.
 
 This is a fork of [Lobster](https://github.com/lobsters/lobsters)
 
@@ -42,6 +42,18 @@ Use the steps below for a local install
       You might also see `ld: library not found for -lssl` if you're using
       macOS 10.4+ and Homebrew `openssl`, in which case see
       [this solution](https://stackoverflow.com/a/39628463/1042144).
+
+* Generate rails credetials file and add following.
+    ```sh
+    rails credentials:edit --environment development
+    ```
+      ```yaml
+      secret_key_base:
+
+      DOMAIN: 
+      DB_USER:
+      DB_PASSWORD:       
+      ```
 
 * Create a MySQL (other DBs supported by ActiveRecord may work, only MySQL and
 MariaDB have been tested) database, username, and password and put them in a
