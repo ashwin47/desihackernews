@@ -47,7 +47,7 @@ config/scout_apm.yml
 config/*.sphinx.conf
 config/unicorn.conf.rb
 lib/tasks/deploy.rake
-
+config/credentials/development.key
 /config/credentials/development.key
 /config/credentials/production.key
 
