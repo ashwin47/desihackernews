@@ -1,15 +1,16 @@
 <div class="box wide">
   <h1>About</h1>
 
-  <%- raise "Site owner: You need to delete app/views/home/about.html.erb and write your own about page" if Rails.env.production? and Rails.application.name != 'Lobsters' -%>
+  <%- raise "Site owner: You need to delete app/views/home/about.html.erb and write your own about page" if Rails.env.production? and Rails.application.name != 'DesiHackerNews' -%>
 
   <div class="story_text">
   <p>
-  Lobsters is a computing-focused community centered around link aggregation
-  and discussion, launched on July 3rd, 2012.
-  The administrator is <a href="/u/pushcx">Peter Bhat Harkins</a> ("pushcx"), contact him with any support issues.
-  Lobsters was created by <a href="/u/jcs">joshua stein</a>
-  with careful design touches to encourage a healthy community:
+  DesiHackerNews (DHN) is an attempt to cultivate an India centric technology/startup community around link aggregation and discussion.
+  The administrator is <a href="/u/ashwin">Ashwin Mullankandy</a> ("ashwin"), contact him with any support issues.
+  </p>
+  <p>
+    This <a herf="https://github.com/ashwin47/desihackernews"> codebase</a> is a fork  of <a herf="https://lobste.rs/">Lobsters</a>. It was created by <a herf="https://lobste.rs/u/jcs"> joshua stein</a>
+  with careful feature to encourage a healthy community:
   </p>
 
   <ul>
@@ -68,28 +69,18 @@
   Explain the scope, list existing stories that should have been tagged, make a case for why people would want to specifically filter it out, and justify the increased complexity for submitters and mods.
   </p>
 
-  <p>
-  Lobsters is focused pretty narrowly on computing; tags like <a href="/t/art">art</a> don't imply every piece of art is on-topic.
-  Some rules of thumb for great stories to submit: Will this improve the reader's next program? Will it deepen their understanding of their last program? Will it be more interesting in five or ten years?
-  </p>
-
-  <p>
-  Some things that are off-topic here but popular on larger, similar sites:
-  entrepreneurship, management, news about companies that employ a lot of programmers,
-  investing, world events, anthropology, self-help, personal productivity systems,
-  last-resort customer service requests via public shaming,
-  "I wanted to see what this site's amazing users think about this off-topic thing",
-  and
-  defining the single morally correct economic and political system for the entire world when we can't even settle tabs vs. spaces.
-  </p>
-
   <h2 id="invitations">Invitation Tree</h2>
+
+  <p>
+    Currently, DHN is open to all for sign up. But after a certain time it will become invite only. It will help us to combat spam, increase
+    accountability and overall better quality discussion.
+  </p>
   <p>
   The full <a href="/u">user tree</a> is public and each user's profile
   shows who invited them.  This provides some degree of accountability and
   helps identify voting rings.
   </p>
-
+  <% if false %>
   <p>
   New users must be invited by a current user, though there is no formal vetting process.
   Invitations are used as a mechanism for spam-control,
@@ -105,8 +96,10 @@
   <% end %>
   </p>
 
+  <% end %>
+
   <p>
-  There's no limit on how many invitations a user can send (though we might at some point, to manage <a href="https://lobste.rs/stats">growth</a>).
+  There's no limit on how many invitations a user can send (though we might at some point, to manage <a href="/stats">growth</a>).
   When accounts are banned for spam, <a href="https://en.wikipedia.org/wiki/Sockpuppet_(Internet)">sockpuppeting</a>, or other abuse,
   moderators will consider disabling their inviter's ability to send invitations or, rarely, also ban them.
   </p>
@@ -117,9 +110,9 @@
   All users have equal votes, with no special priorities or penalties for specific users or domains.
   Moderators have no ability to raise or <a href="http://www.righto.com/2013/11/how-hacker-news-ranking-really-works.html">lower</a> the rankings of stories or comments (besides voting like any user).
   Per-tag <a href="/filters">hotness modifiers</a> affect all stories with
-  those tags, but these modifiers (and <a href="https://lobste.rs/moderations?utf8=%E2%9C%93&moderator=(All)&what[tags]=tags">changes</a> to them) are public.
+  those tags, but these modifiers (and <a href="https://hackernews.desi/moderations?utf8=%E2%9C%93&moderator=(All)&what[tags]=tags">changes</a> to them) are public.
   Domains used for marketing analytics are banned and tracking parameters are removed from links
-  (look for <tt>TRACKING_DOMAINS</tt> and <tt>utm_</tt> in <a href="https://github.com/lobsters/lobsters/blob/master/app/models/story.rb">story.rb</a>).
+  (look for <tt>TRACKING_DOMAINS</tt> and <tt>utm_</tt> in <a href="https://github.com/ashwin47/desihackernews/blob/master/app/models/story.rb">story.rb</a>).
   </p>
 
   <div id="flags">
@@ -157,7 +150,7 @@
   <h2 id="transparency">Transparency Policy</h2>
   <p>
   All <a href="/moderations">moderator actions</a> on this site are visible to
-  everyone and the identities of those moderators are <a href="/u?moderators=1">public</a>.
+  members and the identities of those moderators are <a href="/u?moderators=1">public</a>.
   While the individual actions of a moderator may cause debate, there should be no question about if an action happened or who is responsible.
   </p>
 
@@ -169,34 +162,14 @@
   </p>
 
   <p>
-  The <a href="https://github.com/lobsters/lobsters">source code to this site</a> and
-  its <a href="https://github.com/lobsters/lobsters-ansible">provisioning and deployment</a> are
-  made available under a 3-clause BSD license for viewing, auditing, forking, or contributing to.
-  The codebase is used to run a dozen or so sister sites (that we know of) and we <a href="https://github.com/lobsters/lobsters/wiki">keep a list</a>;
-  please get in touch if you've launched one.
-  </p>
-
-  <p id="queries">
-  The Lobsters community is in a sweet spot that it's large enough to be worth asking questions about and small enough the answers make sense.
-  We have <a href="/stats">some basic stats</a> available,
-  and Peter is happy to run queries against the <a href="https://github.com/lobsters/lobsters/blob/master/db/schema.rb">database</a> and Rails/MySQL/nginx logs (but not write them for you),
-  as long as they don't reveal personal info like IPs, browsing, and voting or create “worst-of” leaderboards celebrating most-flagged users/comments/stories.
-  If you're an academic researcher, please <a href="https://lobste.rs/s/cqnzl5/lobste_rs_access_pattern_statistics_for">be like MIT</a>, not like <a href="https://github.com/lobsters/lobsters/issues/517">UChicago</a> secretly experimenting on maintainers without IRB review.
-  </p>
-
-  <p>
-  If you dislike the content or moderation policies here, you may prefer
-  <a href="https://news.ycombinator.com">Y Combinator News</a>,
-  <a href="https://reddit.com/r/programming">r/programming</a>,
-  <a href="https://slashdot.org">Slashdot</a>,
-  <a href="https://tilde.news">Tilde News</a>, or
-  <a href="https://en.wikipedia.org/wiki/Comp.*_hierarchy">comp.*</a>.
-  Or you could use <a href="https://github.com/lobsters/lobsters/">our codebase</a> to start your own site.
+  The <a href="https://github.com/ashwin47/desihackernews/">source code to this site</a> is
+   available under a 3-clause BSD license for viewing, auditing, forking, or contributing to.
   </p>
 
   <h2 id="features">Other Technical Features</h2>
 
   <ul>
+  <% if false %>
   <li><p>
   <strong><a href="/s/jg3eet">Mailing list mode</a></strong> can be enabled
   per-user to receive all new stories (including their plain-text content as
@@ -210,11 +183,12 @@
   comments, just as if the comment was posted through a web browser.
   <%- raise "Don't just delete that error message. You didn't set up mailing list mode, right? This really isn't your about page, write one from scratch." if Rails.env.production? and Rails.application.name != 'Lobsters' -%>
   </p>
+  <% end %>
 
   <li><p>
   <strong>Private messaging</strong> enables users to communicate privately
   without having to publicly disclose an e-mail address, and users can receive
-  e-mail and <a href="https://pushover.net/">Pushover</a> notifications of new
+  e-mail notifications of new
   private messages.
   </p></li>
 
@@ -232,10 +206,9 @@
   </p></li>
 
   <li id="merging"><p>
-    <strong><a href="/s/cqq0kg/story_merging">Story merging</a></strong> collects comments on a topic that would otherwise fragment across multiple stories.
+    <strong><a href="https://lobste.rs/s/cqq0kg/story_merging">Story merging</a></strong> collects comments on a topic that would otherwise fragment across multiple stories.
     This keeps the front page from being overwhelmed by a single topic and the discussion together for those interested (or so disinterested they'd prefer to hide it).
     Moderators merge stories on the same topic submitted within a week.
-    Here's a <a href="/s/klkmey">small</a> and <a href="/s/zknzmj">large</a> example.
   </p></li>
 
   <li><p>
@@ -281,63 +254,7 @@
   service</a></strong> for anonymous access to the site.
   </p></li>
   <% end %>
-
-  <li><p>
-  <strong>Stickers</strong> will be available again when someone finds a service that will print and ship 2" square vinyl stickers
-  with a bleed &lt;= 1/16" (preferably full-bleed) directly to people who want them.
-  </p></li>
   </ul>
 
-  <h2 id="trivia">Trivia</h2>
-
-  <ul>
-  <li><p>
-  Lobsters is hosted at DigitalOcean. We <a href="https://lobste.rs/s/udj6qf/hosting_update">recently migrated</a> and our setup is still in flux.
-  Please hassle pushcx if he hasn't filled in details by March 2021.
-  Our domain name is registered with <a href="https://cridomains.rs/en">CRI Domains</a>, who donated our first year of registration.
-  DNS is provided by <a href="https://dnsimple.com/">DNSimple</a> and
-  we use <a href="https://www.tarsnap.com">Tarsnap</a> for backups, both of which pushcx pays for.
-  </p></li>
-
-  <li id="emoji" style="list-style: none; position: relative; left: -1em;">
-  <span style="float: left; line-height: 1.5em;">🦞</span>
-  <p style="padding-left: 1em;">
-  <a href="https://unicode.org/consortium/adopted-characters.html#s1f99E">Sponsor of the lobster emoji</a>:
-  In February 2018, Lobsters <a href="https://lobste.rs/s/pnysdr/lobsters_emoji_adoption">held a fundraiser</a>
-  to officially adopt the new lobster emoji in support of the Unicode Foundation.
-  </p></li>
-
-  <li id="michaelbolton"><p>
-  The name "Lobste.rs" is a cute <a href="https://en.wikipedia.org/wiki/Domain_hack">domain hack</a>
-  without any deeper meaning.
-  <%- require 'digest/md5'; instance_variable_set("@#{controller_name}#{action_name}", Digest::MD5.hexdigest(Rails.env) == 'fd89784e59c72499525556f80289b2c7' && Digest::MD5.hexdigest(Rails.application.name) != '4e7c4ddc593da2e7a1cc8c6dc2d38eba') -%>
-  It <a href="https://www.youtube.com/watch?v=ADgS_vMGgzY">has nothing to do</a>
-  with self-help guru Jordan Peterson, whose fans started to
-  <a href="https://www.nytimes.com/2018/05/18/style/jordan-peterson-12-rules-for-life.html">call themselves "lobsters"</a>
-  about six years after we started.
-  </p></li>
-
-  <li><p>
-    If you prefer to read Lobsters on a dark background instead of a light one, there are a few options. You could install the
-    <a href="https://darkreader.org/">Dark Reader extension</a>;
-    or an extension to add your own CSS to sites like <a href="https://add0n.com/stylus.html">Stylus</a> or <a href="https://github.com/openstyles/stylus/wiki/Usercss">UserCSS</a> (<a href="https://en.wikipedia.org/wiki/Stylish#Privacy_issues">never Stylish</a>). Themes:
-    <a href="https://openusercss.org/theme/5cc5ad28ad27da0c0016cf3c">1</a>
-    <a href="https://openusercss.org/theme/5cc5ab1ead27da0c0016cf3a">2</a>
-    <a href="https://openusercss.org/theme/5cc5aeb3ad27da0c0016cf3d">3</a>
-    <a href="https://openusercss.org/theme/5cc5ac10ad27da0c0016cf3b">4</a>.
-    Discussion:
-    <a href="https://github.com/lobsters/lobsters/issues/404">1</a>
-    <a href="https://github.com/lobsters/lobsters/issues/637">2</a>
-    <a href="https://lobste.rs/s/om839j/dark_light_mode">3</a>
-    <a href="https://lobste.rs/s/iaajwb/dark_theme_for_lobsters">4</a>
-  </p></li>
-
-  <li><p>
-    If you prefer the article links or comment links to open a new tab instead of navigating in your current tab you can add
-    <a href="https://greasyfork.org/en/scripts/392307-lobste-rs-open-in-new-tab">a client-side script</a> to do so.
-    (<a href="https://lobste.rs/s/0g48hl/open_links_articles_new_tab">Discussion</a>)
-  </p></li>
-
-  </ul>
   </div>
 </div>

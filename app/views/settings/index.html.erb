@@ -174,61 +174,22 @@
     <br>
 
     <div class="legend">
-      Comment Reply Notification Settings
+      Email Notification Settings
     </div>
 
     <div class="boxline">
-      <%= f.label :email_replies, "Receive E-mail:", :class => "required" %>
+      <%= f.label :email_replies, "Comment Reply", :class => "required" %>
       <%= f.check_box :email_replies %>
     </div>
 
     <div class="boxline">
-      <%= f.label :pushover_replies, "Receive Pushover Alert:",
-        :class => "required" %>
-      <%= f.check_box :pushover_replies %>
-      <span class="hint">
-        Requires Pushover subscription above
-      </span>
-    </div>
-
-    <br>
-
-    <div class="legend">
-      Comment Mention Notification Settings
-    </div>
-
-    <div class="boxline">
-      <%= f.label :email_mentions, "Receive E-mail:", :class => "required" %>
+      <%= f.label :email_mentions, "Comment Mention:", :class => "required" %>
       <%= f.check_box :email_mentions %>
     </div>
 
     <div class="boxline">
-      <%= f.label :pushover_mentions, "Receive Pushover Alert:",
-        :class => "required" %>
-      <%= f.check_box :pushover_mentions %>
-      <span class="hint">
-        Requires Pushover subscription above
-      </span>
-    </div>
-
-    <br>
-
-    <div class="legend">
-      Private Message Notification Settings
-    </div>
-
-    <div class="boxline">
-      <%= f.label :email_messages, "Receive E-mail:", :class => "required" %>
+      <%= f.label :email_messages, "Private Message:", :class => "required" %>
       <%= f.check_box :email_messages %>
-    </div>
-
-    <div class="boxline">
-      <%= f.label :pushover_messages, "Receive Pushover Alert:",
-        :class => "required" %>
-      <%= f.check_box :pushover_messages %>
-      <span class="hint">
-        Requires Pushover subscription above
-      </span>
     </div>
 
     <br>
@@ -245,7 +206,9 @@
     </div>
 
     <br>
-
+    
+    <% if false %>
+    
     <div class="legend">
       Mailing List Settings
     </div>
@@ -276,6 +239,7 @@
     </div>
 
     <br>
+    <% end %>
 
     <div class="legend">
       Miscellaneous Settings
