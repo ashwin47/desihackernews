@@ -5,12 +5,12 @@
 
   <div class="story_text">
   <p>
-  DesiHackerNews (DHN) is an attempt to cultivate an India centric technology/startup community around link aggregation and discussion.
-  The administrator is <a href="/u/ashwin">Ashwin Mullankandy</a> ("ashwin"), contact him with any support issues.
+  DesiHackerNews(DHN) is an attempt to cultivate an India centric technology/startup community around link aggregation and discussion.
+  If you have never heard of Hacker News before, this may not be the place for you. The administrator is <a href="/u/ashwin">Ashwin Mullankandy</a> ("ashwin"), contact him with any support issues.
   </p>
   <p>
     This <a herf="https://github.com/ashwin47/desihackernews"> codebase</a> is a fork  of <a herf="https://lobste.rs/">Lobsters</a>. It was created by <a herf="https://lobste.rs/u/jcs"> joshua stein</a>
-  with careful feature to encourage a healthy community:
+  with careful features to encourage a healthy community:
   </p>
 
   <ul>
@@ -25,8 +25,8 @@
   <p>
   When links or stories are submitted, they must be tagged by the submitter from a list of predefined <a href="/tags">tags</a>.
   Users can choose to <a href="/filters">filter</a> out or
-  subscribe to all submissions with particular tags (example: <a href="https://lobste.rs/t/programming.rss">programming.rss</a>)
-  or combinations of tags (example: <a href="https://lobste.rs/t/programming,audio.rss">programming,audio.rss</a>).
+  subscribe to all submissions with particular tags (example: <a href="https://hackernews.desi/t/programming.rss">programming.rss</a>)
+  or combinations of tags (example: <a href="https://hackernews.desi/t/programming,audio.rss">programming,audio.rss</a>).
   All users see all stories by default.
   The tagging system works this way for three reasons:
   </p>
@@ -64,7 +64,7 @@
 
   <p>
   Creating new tags and retiring old tags is done by the community by submitting, discussing, and voting on <a href="/t/meta" class="tag">meta</a>-tagged requests about them,
-  and these events are <a href="https://lobste.rs/moderations?utf8=✓&moderator=(All)&what[tags]=tags">logged</a> (since 2018-04).
+  and these events are <a href="https://hackernews.desi/moderations?utf8=✓&moderator=(All)&what[tags]=tags">logged</a>.
   To propose a tag, post a <a href="/t/meta">meta</a> thread with the name and description.
   Explain the scope, list existing stories that should have been tagged, make a case for why people would want to specifically filter it out, and justify the increased complexity for submitters and mods.
   </p>
@@ -72,7 +72,7 @@
   <h2 id="invitations">Invitation Tree</h2>
 
   <p>
-    Currently, DHN is open to all for sign up. But after a certain time it will become invite only. It will help us to combat spam, increase
+    Currently, DHN is open to sign up. But after a certain time it will become invite only. It will help us to combat spam, increase
     accountability and overall better quality discussion.
   </p>
   <p>
@@ -181,7 +181,7 @@
   which allows them to reply to stories or comments directly in their e-mail
   client.  These e-mails are then converted and submitted to the website as
   comments, just as if the comment was posted through a web browser.
-  <%- raise "Don't just delete that error message. You didn't set up mailing list mode, right? This really isn't your about page, write one from scratch." if Rails.env.production? and Rails.application.name != 'Lobsters' -%>
+  <%- raise "Don't just delete that error message. You didn't set up mailing list mode, right? This really isn't your about page, write one from scratch." if Rails.env.production? and Rails.application.name != 'DesiHackerNews' -%>
   </p>
   <% end %>
 
@@ -225,7 +225,7 @@
   be automatically applied to a story when a quorum of users agrees on a new
   title (such as removing a site's name, or appending the story's year of
   publication) or set of tags, without any moderator action required.
-  (<a href="https://lobste.rs/moderations?utf8=%E2%9C%93&moderator=(Users)">Log</a>)
+  (<a href="https://hackernews.desi/moderations?utf8=%E2%9C%93&moderator=(Users)">Log</a>)
   </p></li>
 
   <li><p>
