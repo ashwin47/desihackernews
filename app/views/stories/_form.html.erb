@@ -97,6 +97,7 @@ See the guidelines below for more." %>
         so that it can be voted on separately from the story.
         </p></li>
 
+      <% if false %>
         <li><p>
         If no <a href="/tags">tags</a> clearly apply to the story you are submitting, chances
         are it does not belong here.  Do not overreach with tags if they
@@ -114,7 +115,7 @@ See the guidelines below for more." %>
         You'll be taken to this page with the viewed page's URL and title.
         (It can't recognize and remove blog/author names for you, though.)
         </p></li>
-
+      <% end %>
       </ul>
     <% end %>
   <% end %>
@@ -129,6 +130,7 @@ See the guidelines below for more." %>
         " the author of the story at this URL (or this text)",
         :class => "normal" %>
     </div>
+  <% if false %>
     <div class="boxline">
       <%= f.label :user_is_following, "Follow:", :class => "required" %>
       <%= f.check_box :user_is_following %>
@@ -137,6 +139,7 @@ See the guidelines below for more." %>
         " this story to receive replies via e-mail and Pushover",
         :class => "normal" %>
     </div>
+  <% end %>
   </div>
 
   <script>
