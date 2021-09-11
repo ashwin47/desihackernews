@@ -36,7 +36,7 @@ if Rails.env.production?
   BCrypt::Engine.cost = 12
 
   Keybase.DOMAIN = Rails.application.domain
-  Keybase.BASE_URL = ENV.fetch('KEYBASE_BASE_URL') { 'https://keybase.io' }
+  Keybase.BASE_URL = nil # ENV.fetch('KEYBASE_BASE_URL') { 'https://keybase.io' }
 
   ActionMailer::Base.delivery_method = :smtp
 
