@@ -13,7 +13,7 @@
 
     <%= errors_for(@new_user) %>
 
-    <% if not Rails.application.open_signups? %>
+    <% if (Rails.application.open_signups_and_invite? && @invitation.present?) %>
         <%= f.hidden_field "invitation_code", :value => @invitation.code, :name => :invitation_code %>
       <p>
       <%= f.label :invitation, "Invited By:", :class => "required" %>

@@ -30,6 +30,10 @@ class SignupController < ApplicationController
       end
     end
 
+    if Rails.application.open_signups_and_invite?
+      @invitation = Invitation.unused.where(:code => params[:invitation_code].to_s).first
+    end
+
     @title = "Signup"
 
     @new_user = User.new
@@ -54,6 +58,11 @@ class SignupController < ApplicationController
     @new_user = User.new(user_params)
 
     if !Rails.application.open_signups?
+      @new_user.invited_by_user_id = @invitation.user_id
+    end
+    
+    if (Rails.application.open_signups_and_invite? && params[:invitation_code].present?)
+      @invitation = Invitation.unused.where(:code => params[:invitation_code].to_s).first
       @new_user.invited_by_user_id = @invitation.user_id
     end
 

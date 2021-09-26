@@ -87,6 +87,10 @@ class << Rails.application
     Rails.application.credentials.config[:OPEN_SIGNUPS]
   end
 
+  def open_signups_and_invite?
+    Rails.application.credentials.config[:OPEN_SIGNUPS] # make it false if invite not needed for open signups
+  end
+
   def domain
     Rails.application.credentials.config[:DOMAIN] || "lvh.me:3000"
   end
