@@ -83,7 +83,10 @@ class User < ApplicationRecord
             :format => { :with => /\Ahttps?:\/\/[^\/\s]+\.[^.\/\s]+(\/.*)?\Z/ },
             :allow_blank => true
 
-  validates :password, :presence => true, :on => :create
+  validates :password,
+            presence: true,
+            on: :create,
+            length: { minimum: 6 }
 
   VALID_USERNAME = /[A-Za-z0-9][A-Za-z0-9_-]{0,24}/.freeze
   validates :username,
