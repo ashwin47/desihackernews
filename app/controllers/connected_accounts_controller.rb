@@ -109,7 +109,7 @@ class ConnectedAccountsController < ApplicationController
       params[:oauth_token], params[:oauth_verifier])
 
     if email.present? && @user.email != email
-      flash[:error] = "You can only associate twitter account with the same email id"
+      flash[:error] = "You can only associate twitter account with the same email address"
       return redirect_to "/settings"
     end
 
