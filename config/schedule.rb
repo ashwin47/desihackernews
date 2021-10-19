@@ -20,7 +20,7 @@
 # Learn more: http://github.com/javan/whenever
 
 every 10.minutes do
-  rake "script/post_to_twitter"
+  command "script/post_to_twitter"
 end
 
 every 1.day, at: '8:00 am' do
