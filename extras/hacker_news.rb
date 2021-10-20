@@ -16,9 +16,11 @@ class HackerNews
 
   def self.post_story(selected_posts)
     created_stories = []
-    hn_user = Rails.application.credentials.dig(:HN, :WRITER)
-    bot = User.where(username: hn_user).first
+    hn_users = Rails.application.credentials.dig(:HN, :WRITER)
     selected_posts.each do |s|
+      hn_user = hn_users.split(",").sample # it can be comma separated string to make it random users
+      puts hn_user
+      bot = User.where(username: hn_user).first
       story_hash = {}
       url = s["url"]
       title = s["title"]

@@ -19,8 +19,10 @@
 
 # Learn more: http://github.com/javan/whenever
 
+set :output, Whenever.path + '/log/cron.log'
+
 every 10.minutes do
-  command "script/post_to_twitter"
+  command Whenever.path + "/script/post_to_twitter"
 end
 
 every 1.day, at: '8:00 am' do
