@@ -1,4 +1,6 @@
-require 'faker'
+if Rails.env.development? || Rails.env.test?
+  require 'faker'
+end
 
 class FakeDataGenerator
   def initialize(users_count = 50, stories_count = 100, categories_count = 5)

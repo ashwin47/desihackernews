@@ -91,7 +91,8 @@ class << Rails.application
   end
 
   def open_signups_and_invite?
-    Rails.application.credentials.config[:OPEN_SIGNUPS] # make it false if invite not needed for open signups
+    # make it false if invite not needed for open signups
+    Rails.application.credentials.config[:OPEN_SIGNUPS]
   end
 
   def domain

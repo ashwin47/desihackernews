@@ -1,15 +1,19 @@
 if Rails.env.production?
   DesiHackerNews::Application.config.middleware.use ExceptionNotification::Rack,
-    :ignore_exceptions => [
-      "ActionController::UnknownFormat",
-      "ActionController::BadRequest",
-      "ActionDispatch::RemoteIp::IpSpoofAttackError",
-    ] + ExceptionNotifier.ignored_exceptions,
-    :email => {
-      :email_prefix => "[site] ",                    # fill in site name
-      :sender_address => %{"Exception Notifier" <>}, # fill in from address
-      :exception_recipients => %w{},                 # fill in destination addresses
-    }
+                                                    :ignore_exceptions => [
+                                                      "ActionController::UnknownFormat",
+                                                      "ActionController::BadRequest",
+                                                      "ActionDispatch::RemoteIp" \
+                                                      "::IpSpoofAttackError",
+                                                    ] + ExceptionNotifier.ignored_exceptions,
+                                                    :email => {
+                                                      :email_prefix => "[site] ",
+                                                      # fill in site name
+                                                      :sender_address => %{"Exception Notifier" <>},
+                                                      # fill in from address
+                                                      :exception_recipients => %w{},
+                                                      # fill in destination addresses
+                                                    }
 
   Pushover.API_TOKEN = Rails.application.credentials.dig(:PUSHOVER, :API_TOKEN)
   Pushover.SUBSCRIPTION_CODE = Rails.application.credentials.dig(:PUSHOVER, :SUBSCRIPTION_CODE)

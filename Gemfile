@@ -64,3 +64,5 @@ group :test, :development do
   gem "webmock" # used to support vcr
   gem 'simplecov', require: false
 end
+
+gem "dockerfile-rails", ">= 1.2", :group => :development

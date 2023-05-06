@@ -9,9 +9,9 @@ describe Markdowner do
   it "turns @username into a link if @username exists" do
     create(:user, :username => "blahblah")
 
-    expect(Markdowner.to_html("hi @blahblah test"))
-      .to eq("<p>hi <a href=\"https://#{DesiHackerNews::Application.domain}/u/blahblah\" rel=\"ugc\">" +
-        "@blahblah</a> test</p>\n")     
+    expected_html = "<p>hi <a href=\"https://#{DesiHackerNews::Application.domain}/u/blahblah\" "\
+    "rel=\"ugc\">@blahblah</a> test</p>\n"
+    expect(Markdowner.to_html("hi @blahblah test")).to eq(expected_html)
 
     expect(Markdowner.to_html("hi @flimflam test"))
       .to eq("<p>hi @flimflam test</p>\n")

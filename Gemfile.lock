@@ -102,6 +102,8 @@ GEM
     date (3.3.3)
     diff-lcs (1.5.0)
     docile (1.4.0)
+    dockerfile-rails (1.2.5)
+      rails
     erubi (1.12.0)
     exception_notification (4.5.0)
       actionmailer (>= 5.2, < 8)
@@ -161,6 +163,8 @@ GEM
     nio4r (2.5.9)
     nokogiri (1.14.2)
       mini_portile2 (~> 2.8.0)
+      racc (~> 1.4)
+    nokogiri (1.14.2-aarch64-linux)
       racc (~> 1.4)
     nokogiri (1.14.2-x86_64-linux)
       racc (~> 1.4)
@@ -317,6 +321,7 @@ GEM
     zeitwerk (2.6.7)
 
 PLATFORMS
+  aarch64-linux
   ruby
   x86_64-linux
 
@@ -328,6 +333,7 @@ DEPENDENCIES
   capybara
   commonmarker (>= 0.23.6)
   database_cleaner
+  dockerfile-rails (>= 1.2)
   exception_notification
   factory_bot_rails
   faker
@@ -367,4 +373,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   2.3.16
+   2.4.3
