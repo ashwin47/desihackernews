@@ -19,7 +19,7 @@ require "rails/test_unit/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module Lobsters
+module DesiHackerNews
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
@@ -44,6 +44,8 @@ module Lobsters
     config.action_controller.action_on_unpermitted_parameters = :raise
 
     # config.active_record.raise_in_transactional_callbacks = true
+
+    config.action_mailer.perform_deliveries = true
 
     config.cache_store = :file_store, "#{config.root}/tmp/cache/"
 
@@ -81,19 +83,23 @@ class << Rails.application
   end
 
   def allow_new_users_to_invite?
-    false
+    true
   end
 
   def open_signups?
-    ENV["OPEN_SIGNUPS"] == "true"
+    Rails.application.credentials.config[:OPEN_SIGNUPS]
+  end
+
+  def open_signups_and_invite?
+    Rails.application.credentials.config[:OPEN_SIGNUPS] # make it false if invite not needed for open signups
   end
 
   def domain
-    "lobste.rs"
+    Rails.application.credentials.config[:DOMAIN] || "lvh.me:3000"
   end
 
   def name
-    "Lobsters"
+    "DesiHackerNews"
   end
 
   # to force everyone to be considered logged-out (without destroying
@@ -118,5 +124,9 @@ class << Rails.application
   # config.force_ssl be on)
   def ssl?
     true
+  end
+
+  def plausible_url
+    Rails.application.credentials.config[:PLAUSIBLE_URL]
   end
 end

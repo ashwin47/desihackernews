@@ -8,4 +8,4 @@ if Rails.env.development? || Rails.env.test?
   RuboCop::RakeTask.new
 end
 
-Lobsters::Application.load_tasks
+DesiHackerNews::Application.load_tasks

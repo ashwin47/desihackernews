@@ -1,0 +1,23 @@
+development:
+  adapter: mysql2
+  encoding: utf8mb4
+  reconnect: false
+  database: desihacker_dev
+  username: <%= Rails.application.credentials.config[:DB_USER] %>
+  password: <%= Rails.application.credentials.config[:DB_PASSWORD] %>
+  
+test:
+  adapter: mysql2
+  encoding: utf8mb4
+  reconnect: false
+  database: desihacker_test
+  username: <%= Rails.application.credentials.config[:DB_USER] %>
+  password: <%= Rails.application.credentials.config[:DB_PASSWORD] %>
+
+production:
+  adapter: mysql2
+  encoding: utf8mb4
+  reconnect: true
+  database: desihacker_prod
+  username: <%= Rails.application.credentials.config[:DB_USER] %>
+  password: <%= Rails.application.credentials.config[:DB_PASSWORD] %>
