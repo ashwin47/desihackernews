@@ -45,7 +45,7 @@ Use the steps below for a local install
 
 * Generate rails credetials file and add following.
     ```sh
-    rails credentials:edit --environment development
+    rails credentials:edit
     ```
     
     ```yaml

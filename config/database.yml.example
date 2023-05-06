@@ -19,5 +19,5 @@ production:
   encoding: utf8mb4
   reconnect: true
   database: desihacker_prod
-  username: <%= Rails.application.credentials.config[:DB_USER] %>
-  password: <%= Rails.application.credentials.config[:DB_PASSWORD] %>
+  username: <%= Rails.application.credentials.config[:PROD_DB_USER] %>
+  password: <%= Rails.application.credentials.config[:PROD_DB_PASSWORD] %>
