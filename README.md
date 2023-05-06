@@ -53,7 +53,9 @@ Use the steps below for a local install
 
     DOMAIN: 
     DB_USER:
-    DB_PASSWORD:       
+    DB_PASSWORD:
+    PROD_DB_USER:
+    PROD_DB_PASSWORD:
     ```
 
 * Create a MySQL (other DBs supported by ActiveRecord may work, only MySQL and
