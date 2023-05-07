@@ -40,7 +40,7 @@
       href="<%= @comments_rss_link[:href] %>" />
   <% end %>
   <% if Rails.application.plausible_url %>
-    <script async defer data-domain=<%= Rails.application.domain %> src=<%= Rails.application.plausible_url %> ></script>
+    <script defer data-domain="<%= Rails.application.domain %>" src="<%= Rails.application.plausible_url %>"></script>
   <% end %>
 </head>
 <body data-username='<%= @user.try(:username) %>'>
