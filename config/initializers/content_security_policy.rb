@@ -11,7 +11,7 @@ Rails.application.config.content_security_policy do |policy|
   policy.img_src     '*', :data
   # script_src
   # unsafe_eval: required when previewing a story submission
-  policy.script_src  :self, :unsafe_inline, :unsafe_eval
+  policy.script_src  :self, :unsafe_inline, :unsafe_eval, "https://plausible.purplebird.xyz/js/script.js"
   policy.style_src   :self, :unsafe_inline
   policy.form_action :self
 
