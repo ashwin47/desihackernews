@@ -6,7 +6,7 @@
 
 Rails.application.config.content_security_policy do |policy|
   policy.default_src :none
-  policy.connect_src :self
+  policy.connect_src :self, "https://plausible.purplebird.xyz/api/event"
   policy.font_src    :self, :https, :data
   policy.img_src     '*', :data
   # script_src
