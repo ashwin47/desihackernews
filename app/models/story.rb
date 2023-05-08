@@ -156,7 +156,7 @@ class Story < ApplicationRecord
     if self.url.present?
       already_posted_recently?
       check_not_tracking_domain
-      check_not_new_domain_from_new_user
+      #check_not_new_domain_from_new_user
       errors.add(:url, "is not valid") unless url.match(URL_RE)
     elsif self.description.to_s.strip == ""
       errors.add(:description, "must contain text if no URL posted")
@@ -469,11 +469,11 @@ class Story < ApplicationRecord
       end
     end
 
-    if self.taggings.reject {|t| t.marked_for_destruction? || t.tag.is_media? }.empty?
-      errors.add(:base, "Must have at least one non-media (PDF, video) " <<
-        "tag.  If no tags apply to your content, it probably doesn't " <<
-        "belong here.")
-    end
+    # if self.taggings.reject {|t| t.marked_for_destruction? || t.tag.is_media? }.empty?
+    #   errors.add(:base, "Must have at least one non-media (PDF, video) " <<
+    #     "tag.  If no tags apply to your content, it probably doesn't " <<
+    #     "belong here.")
+    # end
   end
 
   def comments_path
