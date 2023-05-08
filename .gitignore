@@ -56,3 +56,4 @@ lib/tasks/deploy.rake
 /config/credentials/test.key
 .rbenv-vars
 /config/master.key
+.env

@@ -48,6 +48,7 @@ gem "svg-graph", require: 'SVG/Graph/TimeSeries' # for charting, note workaround
 gem 'transaction_retry' # mitigate https://github.com/lobsters/lobsters-ansible/issues/39
 gem 'rack-attack' # rate-limiting
 gem 'whenever', require: false # writing and deploying cron jobs made easy
+gem 'reverse_markdown'
 
 group :test, :development do
   gem 'capybara'
